@@ -1,3 +1,80 @@
-p.verso{
-   color: blue;
+/* Estilos gerais do corpo */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f9;
+  color: #333;
+  padding: 20px;
+}
+
+/* Versos azuis */
+p.verso {
+  color: blue;
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 5px 0;
+}
+
+/* Mote vermelho */
+p.mote {
+  color: red;
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+/* Bloco do poeta */
+.poeta {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Imagem arredondada do poeta */
+.poeta img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Estilo dos links */
+.estilo-link {
+  font-weight: bold;
+  text-decoration: none;
+  color: #0077cc;
+}
+
+.estilo-link:hover {
+  text-decoration: underline;
+  color: darkred;
+}
+
+.estilo-link:visited {
+  color: purple;
+}
+
+/* Tabela de bebidas */
+table {
+  border-collapse: collapse;
+  width: 350px;
+  margin: 30px auto;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background: #0077cc;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background: #f2f2f2;
 }
