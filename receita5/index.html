@@ -1,25 +1,89 @@
 <!DOCTYPE html>
 <html>  
    <head>
-      <meta charset="UTF-8">      
+      <meta charset="UTF-8"> 
+      <style>
+         table {
+            border-collapse: collapse;
+            width: 60%;
+            margin-top: 15px;
+            font-family: Arial, sans-serif;
+         }
+         th, td {
+            border: 1px solid #999;
+            padding: 8px;
+            text-align: left;
+         }
+         th {
+            background-color: #ff6666;
+            color: white;
+         }
+         tr:nth-child(even) {
+            background-color: #ffeaea;
+         }
+         
+         /* links com cara de botão */
+         a.botao {
+            display: inline-block;
+            margin-right: 10px;
+            margin-top: 10px;
+            padding: 10px 16px;
+            font-size: 16px;
+            border-radius: 6px;
+            background-color: #ff6666;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+         }
+         a.botao:hover {
+            background-color: #ff3333;
+         }
+      </style>
    </head>
   
    <body>
-      <div><button id="botaoCarregar">Carregando cervejas...</button></div>
+      <a href="#" id="linkCarregar" class="botao">Carregar sorvetes</a>
+      <a href="#" id="linkOrdenar" class="botao">Mostrar ordenados</a>
+      <a href="#" id="linkEmbaralhar" class="botao">Embaralhar</a>
+
       <div id="meuAmor"></div>            
    </body>   
    
    <script>
-      let cervejas = ["Guiness", "Desperados", "Becks"]
-                
-      //function carregar(){
-      const carregarDiv = () => {
+      let sorvetes = ["Chocolate", "Baunilha", "Morango", "Pistache", "Doce de Leite", "Limão"]               
+
+      const carregarTabela = (items) => {
          const div = document.getElementById("meuAmor")
-         const cervejasHtml = cervejas.map(item => `<h1>${item}</h1>`) 
-         div.innerHTML = `${cervejasHtml.join("\n")}`
+         const linhas = items.map(item => `<tr><td>${item}</td></tr>`)
+         const tabela = `
+            <table>
+               <tr><th>Sorvete</th></tr>
+               ${linhas.join("\n")}
+            </table>`
+         div.innerHTML = tabela
       }
-      
-      let botao = document.getElementById("botaoCarregar")
-      botao.addEventListener("click", carregarDiv)                 
+   
+      const ordenarSorvetes = () => {
+         sorvetes.sort()
+         carregarTabela(sorvetes)
+      }
+  
+      const embaralharSorvetes = () => {
+         sorvetes.sort(() => Math.random() - 0.5)
+         carregarTabela(sorvetes)
+      }
+        
+      document.getElementById("linkCarregar").addEventListener("click", (e) => {
+         e.preventDefault()
+         carregarTabela(sorvetes)  
+      })
+      document.getElementById("linkOrdenar").addEventListener("click", (e) => {
+         e.preventDefault()
+         ordenarSorvetes()
+      })
+      document.getElementById("linkEmbaralhar").addEventListener("click", (e) => {
+         e.preventDefault()
+         embaralharSorvetes()
+      })
    </script>
 </html>
