@@ -1,21 +1,63 @@
 <!DOCTYPE html>
 <html>   
    <head>
-      <meta charset="UTF-8">      
+      <meta charset="UTF-8">  
+      <style>
+         table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-top: 10px;
+            font-family: Arial, sans-serif;
+         }
+         th, td {
+            border: 1px solid #999;
+            padding: 8px;
+            text-align: left;
+         }
+         th {
+            background-color: #333;
+            color: white;
+         }
+         tr:nth-child(even) {
+            background-color: #f2f2f2;
+         }
+      </style>
    </head>
  
    <body>
-      <div id="meu amor"><button id="botaoCarregar">Carregando cervejas...</button></div>            
+      <button id="botaoCarregar">Carregar cervejas</button>
+      <button id="botaoOrdenar">Mostrar ordenadas</button>
+      <button id="botaoEmbaralhar">Embaralhar</button>
+   
+   <div id="meuAmor"></div>          
    </body>   
  
    <script>
       let cervejas = ["Guiness", "Desperados", "Becks"]
-      function carregarDiv(){
-         let div = document.getElementById("meu amor")
-         div.innerHTML = `<h1>${cervejas.join("--")}</h1>`
-      }
-     
-      let botao = document.getElementById("botaoCarregar")
-      botao.addEventListener("click", carregarDiv)                 
+      
+      function carregarTabela(){
+      let div = document.getElementById("meuAmor")
+      let linhas = cervejas.map(item => `<tr><td>${item}</td></tr>`)
+      let tabela = `
+         <table>
+            <tr><th>Cerveja</th></tr>
+            ${linhas.join("\n")}
+         </table>`
+      div.innerHTML = tabela
+   }
+
+   function ordenarCervejas(){
+      cervejas.sort() 
+      carregarTabela()
+   }
+  
+   function embaralharCervejas(){
+      cervejas.sort(() => Math.random() - 0.5) 
+      carregarTabela()
+   }
+   
+   document.getElementById("botaoCarregar").addEventListener("click", carregarTabela)
+   document.getElementById("botaoOrdenar").addEventListener("click", ordenarCervejas)
+   document.getElementById("botaoEmbaralhar").addEventListener("click", embaralharCervejas)              
    </script>
 </html>
