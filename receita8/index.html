@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> 
+   <head>
+      <meta charset="UTF-8"> 
+      <title>Tabelas Genéricas - Random Data API</title> 
+      <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      margin: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      margin-right: 10px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    button:hover {
+      background: #1d4ed8;
+    }
+    table {
+      border-collapse: collapse;
+      margin-top: 20px;
+      width: 90%;
+      background: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #111827;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background: #f3f4f6;
+    }
+  </style>    
+ </head>
 
+   <body>
+      <h1>Exemplos com Random Data API</h1>
+      <button id="botaoCarregar">Carregar cervejas</button>
+      <button id="btnCafes">Carregar Cafés</button>
+      <button id="btnUsuarios">Carregar Usuários</button> 
+      <div id="dadosDiv"></div>
+           
+   <script type="module">
+    import { gerarTabela } from './tabela.js';
+
+    function carregar(endpoint) {
+      const div = document.getElementById("dadosDiv");
+      div.innerHTML = "Carregando dados...";
+
+      fetch(`https://random-data-api.com/api/v2/${endpoint}?size=5`)
+        .then(res => res.json())
+        .then(json => {
+          gerarTabela(json, "dadosDiv");
+        })
+        .catch(err => {
+          div.innerHTML = `❌ Erro ao carregar: ${err}`;
+        });
+    }
+
+    document.getElementById("btnCervejas")
+      .addEventListener("click", () => carregar("beers"));
+
+    document.getElementById("btnCafes")
+      .addEventListener("click", () => carregar("coffee"));
+  </script>
+</body>
+</html>
