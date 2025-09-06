@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html>
-   <head>
-      <title>ReactZero</title>      
-   </head>
-   <body>
-      <div id="app">
-     
-      </div>
-      <script src="libs/react.js"></script>
-      <script src="libs/react-dom.js"></script>
-     
-      <script>
-        
-      </script>
-   </body
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>ReactZero</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script src="libs/react.js"></script>
+    <script src="libs/react-dom.js"></script>
+
+    <script>
+        ReactDOM.render(
+            React.createElement('h1', null, 'React!'),
+            document.getElementById('app')
+        );
+    </script>
+</body>
+</html>
