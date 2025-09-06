@@ -1,1 +1,0 @@
-// Conteúdo do arquivo react.js copiado do repositório Got7mj/web
