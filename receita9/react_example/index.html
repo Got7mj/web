@@ -15,18 +15,42 @@
 
          ReactDOM.render(
             React.createElement(
-               'h1',
-               {id: 'my-heading'},
-               React.createElement(
-                  'span',
-                  null,
-                  'React ',
-                  React.createElement('em', null, 'é muito'),
-               ),
-               ' massa!'
+               'table',
+               { border: 1, style: { width: '300px', margin: '20px auto', textAlign: 'center' } },
+               [
+                  React.createElement(
+                     'thead',
+                     { key: 'thead' },
+                     React.createElement(
+                        'tr',
+                        null,
+                        React.createElement('th', null, 'Nome'),
+                        React.createElement('th', null, 'Idade')
+                     )
+                  ),
+                  React.createElement(
+                     'tbody',
+                     { key: 'tbody' },
+                     [
+                        React.createElement(
+                           'tr',
+                           { key: 'linha1' },
+                           React.createElement('td', null, 'Maria'),
+                           React.createElement('td', null, '22')
+                        ),
+                        React.createElement(
+                           'tr',
+                           { key: 'linha2' },
+                           React.createElement('td', null, 'João'),
+                           React.createElement('td', null, '30')
+                        )
+                     ]
+                  )
+               ]
             ),
             document.getElementById('app')
          );
       </script>
    </body>
 </html>
+
