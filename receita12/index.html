@@ -31,7 +31,7 @@
         }
 
 
-const valoresCabecalhos = ["Nome", "Marca"]
+const valoresCabecalhos = ["Nome", "Marca, "Origem"]
 ReactDOM.render(
    <TabelaBebidas titulo="minha tabela de cana" cabecalhos={ valoresCabecalhos }/>
             ,
@@ -39,3 +39,57 @@ ReactDOM.render(
       </script>
    </body>
 </html>
+
+
+
+
+
+
+      
+
+         class TabelaDinamica extends React.Component {
+            render() {
+               const { titulo, cabecalhos, dados } = this.props;
+
+               return (
+                  <div>
+                     <h1>{titulo}</h1>
+                     <table>
+                        <thead>
+                           <tr>
+                              {cabecalhos.map((c, i) => <th key={i}>{c}</th>)}
+                           </tr>
+                        </thead>
+                        <tbody>
+                           {dados.map((linha, i) => (
+                              <tr key={i}>
+                                 {cabecalhos.map((c, j) => <td key={j}>{linha[c]}</td>)}
+                              </tr>
+                           ))}
+                        </tbody>
+                     </table>
+                  </div>
+               );
+            }
+         }
+
+        
+         const cabecalhos = ["Nome", "Marca", "Origem"];
+
+         // Exemplo de dados (cada objeto corresponde a uma linha da tabela)
+         const dados = [
+            { Nome: "Havana", Marca: "Engenho Anísio Santiago", Origem: "Minas Gerais" },
+            { Nome: "51", Marca: "Companhia Müller de Bebidas", Origem: "São Paulo" },
+            { Nome: "Ypióca", Marca: "Ypióca Agroindustrial", Origem: "Ceará" },
+            { Nome: "Velho Barreiro", Marca: "Tatuzinho 3 Fazendas", Origem: "São Paulo" }
+         ];
+
+         ReactDOM.render(
+            <TabelaDinamica titulo="Tabela de Cachaças" cabecalhos={cabecalhos} dados={dados} />,
+            document.getElementById("app")
+         );
+
+      </script>
+   </body>
+</html>
+
