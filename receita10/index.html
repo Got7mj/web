@@ -3,7 +3,6 @@
    <head>
       <title>ReactZero</title>     
       <style>
-      
          /* Bonitificar a tabela */
          table {
             border-collapse: collapse;
@@ -62,27 +61,24 @@
             return <h1>Minha tabela de bebidas</h1>;
          }
 
-         // Função que retorna a tabela fixa inicial
-         function TabelaBebidas() {
+         // Corrigindo o return do componente
+         const TabelaBebidas = () => {
             return (
-               <table>
-                  <thead>
-                     <tr>
-                        <th>Nome</th>
-                        <th>Marca</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <tr>
-                        <td>Havana</td>
-                        <td>Engenho Anísio Santiago</td>
-                     </tr>
-                  </tbody>
-               </table>
-            );
+               <div>
+                  <h1>Tabela de Bebidas</h1>
+                  <table id="tabela" border="1">
+                     <thead>
+                        <tr><th>Nome</th><th>Marca</th></tr>
+                     </thead>
+                     <tbody>
+                        <tr><td>Havana</td><td>Engenho Anísio Santiago</td></tr>
+                     </tbody>
+                  </table>
+               </div>
+            );                
          }
 
-         // Array fixo de bebidas (exemplo com cachaça)
+         // Array fixo de bebidas
          const bebidas = [
             { nome: "Havana", marca: "Engenho Anísio Santiago" },
             { nome: "51", marca: "Companhia Müller de Bebidas" },
@@ -90,7 +86,7 @@
             { nome: "Velho Barreiro", marca: "Tatuzinho 3 Fazendas" }
          ];
 
-         // Componente que gera a tabela dinamicamente a partir do array
+         // Componente dinâmico
          function TabelaBebidasDinamica({ dados }) {
             return (
                <table>
@@ -112,22 +108,22 @@
             );
          }
 
-         // App principal com botão para renderizar tabela só após clique
+         // App principal
          function App() {
             const [mostrarTabela, setMostrarTabela] = React.useState(false);
 
             return (
                <div>
                   <Cabecalho />
-                  <button onClick={() => setMostrarTabela(true)}>
-                     Mostrar Tabela
+                  <button onClick={() => setMostrarTabela(!mostrarTabela)}>
+                     {mostrarTabela ? "Esconder Tabela" : "Mostrar Tabela"}
                   </button>
                   {mostrarTabela && <TabelaBebidasDinamica dados={bebidas} />}
                </div>
             );
          }
 
-         // Renderizando o componente App
+         // Corrigindo o fechamento da renderização
          ReactDOM.render(
             <App />,
             document.getElementById("app")
