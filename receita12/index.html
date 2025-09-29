@@ -14,10 +14,10 @@
 
       <script type="text/babel">                
 
-         const TabelaBebidas = () => {
+         const TabelaBebidas = (props) => {
             return (
                <div>
-                  <h1>Tabela de Bebidas</h1>
+                  <h1>{props.titulo}</h1>
                   <table id="tabela" border="1">
                      <thead>
                         <tr><th>Nome</th><th>Marca</th></tr>
@@ -31,7 +31,7 @@
          }      
 
          ReactDOM.render(
-            <TabelaBebidas/>
+            <TabelaBebidas titulo="minha tabela de cana"/>
             ,
             document.getElementById("app"))
       </script>
