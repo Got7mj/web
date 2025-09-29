@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>ReactZero</title>     
+   </head>
+   <body>
+      <div id="app"></div>
+
+      <!-- Importando React e ReactDOM -->
+      <script src="libs/react.js"></script>
+      <script src="libs/react-dom.js"></script>
+
+      <script>
+         ReactDOM.render(
+            React.createElement(
+               'table',
+               { id: 'tabela', border:'1' },
+               React.createElement(
+                  'thead',
+                  null,
+                  React.createElement(
+                     'tr',
+                     null,
+                     React.createElement('th', null, 'Nome'),
+                     React.createElement('th', null, 'Idade')
+                  )
+               ),
+               React.createElement(
+                  'tbody',
+                  null,
+                  React.createElement(
+                     'tr',
+                     null,
+                     React.createElement('td', null, 'Maria'),
+                     React.createElement('td', null, '22')
+                  )
+               )
+            ),
+            document.getElementById('app')
+         );
+      </script>
+   </body>
+</html>
