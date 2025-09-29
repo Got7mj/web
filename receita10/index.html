@@ -2,6 +2,49 @@
 <html>
    <head>
       <title>ReactZero</title>     
+      <style>
+      
+         /* Bonitificar a tabela */
+         table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+         }
+         th {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: left;
+         }
+         td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+         }
+         tr:hover {
+            background-color: #f5f5f5;
+         }
+         h1 {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: #333;
+         }
+         button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+         }
+         button:hover {
+            background-color: #45a049;
+         }
+      </style>
    </head>
    <body>
       <div id="app"></div>
@@ -9,14 +52,21 @@
       <!-- React e ReactDOM -->
       <script src="libs/react.js"></script>
       <script src="libs/react-dom.js"></script>
-      <!-- Babel para interpretar JSX -->
+      <!-- Babel para JSX -->
       <script src="libs/babel.js"></script>
 
       <script type="text/babel">
-         ReactDOM.render(
-            <div>
-               <table id="tabela" border="1">
-                  <thead>                  
+
+         // Função que retorna um cabeçalho
+         function Cabecalho() {
+            return <h1>Minha tabela de bebidas</h1>;
+         }
+
+         // Função que retorna a tabela fixa inicial
+         function TabelaBebidas() {
+            return (
+               <table>
+                  <thead>
                      <tr>
                         <th>Nome</th>
                         <th>Marca</th>
@@ -29,9 +79,60 @@
                      </tr>
                   </tbody>
                </table>
-            </div>,
+            );
+         }
+
+         // (4) Array fixo de bebidas (exemplo com cachaça)
+         const bebidas = [
+            { nome: "Havana", marca: "Engenho Anísio Santiago" },
+            { nome: "51", marca: "Companhia Müller de Bebidas" },
+            { nome: "Ypióca", marca: "Ypióca Agroindustrial" },
+            { nome: "Velho Barreiro", marca: "Tatuzinho 3 Fazendas" }
+         ];
+
+         // Componente que gera a tabela dinamicamente a partir do array
+         function TabelaBebidasDinamica({ dados }) {
+            return (
+               <table>
+                  <thead>
+                     <tr>
+                        <th>Nome</th>
+                        <th>Marca</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     {dados.map((bebida, index) => (
+                        <tr key={index}>
+                           <td>{bebida.nome}</td>
+                           <td>{bebida.marca}</td>
+                        </tr>
+                     ))}
+                  </tbody>
+               </table>
+            );
+         }
+
+         // App principal com botão para renderizar tabela só após clique
+         function App() {
+            const [mostrarTabela, setMostrarTabela] = React.useState(false);
+
+            return (
+               <div>
+                  <Cabecalho />
+                  <button onClick={() => setMostrarTabela(true)}>
+                     Mostrar Tabela
+                  </button>
+                  {mostrarTabela && <TabelaBebidasDinamica dados={bebidas} />}
+               </div>
+            );
+         }
+
+         // Renderizando o componente App
+         ReactDOM.render(
+            <App />,
             document.getElementById("app")
          );
+
       </script>
    </body>
 </html>
