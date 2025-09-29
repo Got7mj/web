@@ -5,47 +5,13 @@
    </head>
 
    <body>
-      <div id="app">
-      </div>
+      <div id="app"></div>
 
-      <script src="libs/react.js"/>
-      <script src="libs/react-dom.js"/>
-      <script src="libs/babel.js"/>
+      <script src="libs/react.js"></script>
+      <script src="libs/react-dom.js"></script>
+      <script src="libs/babel.js"></script>
 
       <script type="text/babel">                
-
-         const TabelaBebidas = ({titulo,cabecalhos:[cabecalho1,cabecalho2] }) => {
-            return (
-               <div>
-                  <h1>{titulo}</h1>
-                  <table id="tabela" border="1">
-                    <thead>
-                       <tr><th>{cabecalho1}</th><th>{cabecalho2}</th></tr>
-                    </thead>
-                    <tbody>
-                       <tr><td>Havana</td><td>Engenho Anísio Santiago</td></tr>
-                    </tbody>
-                   </table>
-               </div>
-            )  
-        }
-
-
-const valoresCabecalhos = ["Nome", "Marca, "Origem"]
-ReactDOM.render(
-   <TabelaBebidas titulo="minha tabela de cana" cabecalhos={ valoresCabecalhos }/>
-            ,
-   document.getElementById("app"))
-      </script>
-   </body>
-</html>
-
-
-
-
-
-
-      
 
          class TabelaDinamica extends React.Component {
             render() {
@@ -73,9 +39,6 @@ ReactDOM.render(
             }
          }
 
-        
-         const cabecalhos = ["Nome", "Marca", "Origem"];
-
          // Exemplo de dados (cada objeto corresponde a uma linha da tabela)
          const dados = [
             { Nome: "Havana", Marca: "Engenho Anísio Santiago", Origem: "Minas Gerais" },
@@ -84,12 +47,13 @@ ReactDOM.render(
             { Nome: "Velho Barreiro", Marca: "Tatuzinho 3 Fazendas", Origem: "São Paulo" }
          ];
 
+         const valoresCabecalhos = ["Nome", "Marca", "Origem"];
+
          ReactDOM.render(
-            <TabelaDinamica titulo="Tabela de Cachaças" cabecalhos={cabecalhos} dados={dados} />,
+            <TabelaDinamica titulo="Tabela de Cachaças" cabecalhos={valoresCabecalhos} dados={dados} />,
             document.getElementById("app")
          );
 
       </script>
    </body>
-</html>
-
+</html>    
